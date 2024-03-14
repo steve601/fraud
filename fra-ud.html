@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background-image: url("{{url_for('static',filename = 'frd.jpg')}}");
+        }
+        .navbar{
+            height: 75px;
+            margin: auto 3;
+        }
+        .menu{
+            float: left;
+            width: 400px;
+            height: 70px;
+        }
+        ul{
+            float: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        ul li{
+            font-size: 20px;
+            text-decoration: none;
+            color: white;
+            font-family: Arial;
+            font-weight: bold;
+            transition: 0.4s ease-in-out;
+        }
+        .content{
+            width: 1200px;
+            height: auto;
+            margin: auto;
+            color: white:
+            position: relative;
+        }
+        .content h1{
+            font-family: Times New Roman;
+            font-size: 45px;
+            color: white;
+            padding-left: 20px;
+            margin-top: 9%;
+            letter-spacing: 2px;
+        }
+        form{
+            width: 360px;
+            height: 530px;
+            background-color: SlateGray;
+            position: absolute;
+            top: -20px;
+            left: 870px;
+            border-radius: 10px;
+            padding: 25px;
+        }
+        form h2{
+            text-align: center;
+        }
+        form label{
+            width: 300px;
+            height: 40px;
+            font-size: 20px;
+            font-family: sans-serif;
+        }
+        form input{
+            font-size: 20px;
+            border-bottom: 1px solid PowderBlue;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+        }
+        form input:focus{
+            outline: none;
+        }
+        form button{
+            width: 200px;
+            height: 35px;
+            font-size: 18px;
+            margin-top: 12px;
+        }
+        form button:hover{
+            background: white;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class='main'>
+        <div class='navbar'>
+            <div class='menu'>
+                <ul>
+                    <li>Let's stop Fraudlent Transactions!!</li>
+                </ul>
+            </div>
+        </div>
+        <div class='content'>
+            <h1>FRAUD DETECTION IN <br> IN TRANSACTION</h1>
+            <form action='/detect' method="POST">
+                <h2>DETECT</h2>
+                <label for='Step'>Step</label><br>
+                <input type='number' name = 'Step' value = 'Step'><br>
+                <label for ='Type'>Type Of Transaction</label><br>
+                <input type='radio' name = 'Type' value = "Cash Out">
+                <label for='Cash Out'>Cash Out</label><br>
+                <input type='radio' name = 'Type' value = "Payment">
+                <label for='Payment'>Payment</label><br>
+                <input type='radio' name = 'Type' value = "Debit">
+                <label for='Debit'>Debit</label><br>
+                <input type='radio' name = 'Type' value = "Transfer">
+                <label for='Transfer'>Transfer</label><br>
+                <input type='radio' name = 'Type' value = "Cash In">
+                <label for='Cash In'>Cash In</label><br>
+                <label for='Amount'>Amount Of Transaction</label><br>
+                <input type='number' name='Amount' value="Amount"><br>
+                <label for='Amount'>Balance of sender before transaction</label><br>
+                <input type='number' name='Oldbalorg' value="Oldbalorg"><br>
+                <label for='Amount'>Balance of sender after transaction</label><br>
+                <input type='number' name='newbalorg' value="newbalorg"><br>
+                <label for='Amount'>Balance of receiver before transaction</label><br>
+                <input type='number' name='oldbaldes' value="oldbaldes"><br>
+                <label for='Amount'>Balance of receiver after transaction</label><br>
+                <input type='number' name='newbaldes' value="newbaldes"><br>
+                <button type='submit' value='detect'>Detect</button><br>
+                {{pred_text}}
+            </form>
+        </div>
+    </div>
+</body>
+</html>
